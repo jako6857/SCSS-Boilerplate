@@ -1,5 +1,6 @@
 // NAVIGATION
 @use "variables" as *;
+@use "mixins" as *;
 nav {
   background: $accent-color;
   padding: $gutter / 1.5;
