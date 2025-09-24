@@ -1,0 +1,156 @@
+
+// COLORS
+
+$main-color: #FFB84D;   // toned-down orange for sections
+$accent-color: #333333; // dark grey background
+$cta-color: #3498db;    // blue call-to-action buttons
+$text-light: #fff;
+$text-dark: #222;
+
+// SPACING & FONT
+$gutter: 24px;
+$radius: 20px;
+$section-offset: 20px;   // new horizontal offset
+$font-base: 'Arial', sans-serif;
+$font-header: 'Helvetica', sans-serif;
+$shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+// MIXINS
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin button-style($bg-color) {
+  background: $bg-color;
+  color: $text-light;
+  padding: 0.75rem 1.5rem;
+  border-radius: $radius;
+  border: none;
+  cursor: pointer;
+  font-family: $font-base;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  box-shadow: $shadow;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: darken($bg-color, 10%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+  }
+}
+
+// GLOBAL
+body {
+  font-family: $font-base;
+  color: $text-dark;
+  margin: 0;
+  padding: 0;
+  background: $accent-color;
+  line-height: 1.6;
+}
+
+h2 {
+  font-family: $font-header;
+  margin-bottom: $gutter / 2;
+  color: $text-dark;
+}
+
+// NAVIGATION
+nav {
+  background: $accent-color;
+  padding: $gutter / 1.5;
+
+  ul {
+    @include flex-center;
+    list-style: none;
+    gap: $gutter;
+    margin: 0;
+    padding: 0;
+
+    li a {
+      text-decoration: none;
+      color: $text-light;
+      padding: 0.5rem 1rem;
+      border-radius: $radius / 2;
+      font-weight: bold;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background: $cta-color;
+        transform: translateY(-2px);
+      }
+    }
+  }
+}
+
+// SECTIONS
+section {
+  padding: $gutter * 2;
+  background: $main-color; // toned-down orange
+  margin: $gutter auto;
+  max-width: calc(800px - 2 * #{$section-offset});
+  border-radius: $radius;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+// SECTION 1
+#section1 article {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  p {
+    margin: 0;
+    flex: 0 0 60%;    // restrict text to left side
+    text-align: left;
+  }
+
+  button {
+    @include button-style($cta-color); // button stays on right
+    flex: 0 0 auto;
+  }
+}
+
+// ----------------------
+// SECTION 2
+// ----------------------
+#section2 article p {
+  margin: 0;
+}
+
+// ----------------------
+// SECTION 3
+// ----------------------
+#section3 .image-row {
+  display: flex;
+  justify-content: space-between;
+  gap: $gutter;
+
+  img {
+    width: 100%;
+    max-width: 32%;
+    border-radius: $radius;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
+
+// ----------------------
+// FOOTER
+// ----------------------
+footer {
+  background: $accent-color;
+  color: $text-light;
+  padding: $gutter * 2;
+  text-align: center;
+  font-family: $font-header;
+  font-weight: bold;
+}
